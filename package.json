@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "node ./src/app.js",
-    "test": "mocha ./src/**/*.spec.js"
+    "test": "mocha ./src/**/*.spec.js --exit"
   },
   "keywords": [],
   "author": "",
