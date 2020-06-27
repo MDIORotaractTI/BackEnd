@@ -12,8 +12,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha ./src/test",
-    "start": "nodemon ./src/app.js"
+    "start": "nodemon ./src/app.js",
+    "test": "mocha ./src/test"
+    
   },
   "keywords": [],
   "author": "",
