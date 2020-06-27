@@ -11,7 +11,7 @@ const app = express();
 const swaggerUI = require('swagger-ui-express');
 const swaggerDocument = require('./swagger');
 
-const port = 3000
+const port = process.env.PORT || 3000
 //porta usada
 
 //definição de rotas principais x classes js
