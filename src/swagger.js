@@ -713,7 +713,191 @@ module.exports = {
             required: true
           },
           {
+            name: 'description',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          //ajustar
+          {
+            name: 'media',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'results',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'difficulty',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'keyWords',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'lessons',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'summary',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'finished',
+            in: 'body',
+            schema: {
+              type: 'boolean'
+            },
+            required: true
+          }
+        ],
+        responses: {
+          '201': {
+            description: 'Created'
+          },
+          '400': {
+            description: 'Invalid parameters'
+          },
+          '401': {
+            description: 'Not authorized'
+          },
+          '403': {
+            description: 'Forbidden'
+          }
+      }
+      },
+      put: {
+        tags: ['Projeto'],
+        description: 'Update project',
+        operationId: 'updateProject',
+        parameters: [
+          {
+            name: 'name',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'justification',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'mainObjective',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'specificObjective',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'category',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'startDate',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'endDate',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          //ajustar
+          {
+            name: 'financialReport',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'projectParticipants',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'targetAudience',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
             name: 'disclosure',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          {
+            name: 'partnerships',
+            in: 'body',
+            schema: {
+              type: 'string'
+            },
+            required: true
+          },
+          //ajustar
+          {
+            name: 'schedule',
             in: 'body',
             schema: {
               type: 'string'
@@ -787,8 +971,8 @@ module.exports = {
           }
         ],
         responses: {
-          '201': {
-            description: 'Created'
+          '200': {
+            description: 'Updated'
           },
           '400': {
             description: 'Invalid parameters'
