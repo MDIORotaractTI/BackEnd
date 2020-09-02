@@ -1,6 +1,10 @@
 language: node_js
 node_js:
 - 12
+branches:
+branches:
+  only:
+  - develop
 deploy:
   provider: heroku
   app: backend-siterotaract2020
