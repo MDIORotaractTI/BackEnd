@@ -1,6 +1,9 @@
-const mongoose = require('mongoose');
+const sql = require("mssql");
 
-mongoose.connect('mongodb://localhost/noderest');
-mongoose.Promise = global.Promise;
+const connStr = "Server=localhost;Database=master;User Id=SA;Password=yourStrong(!)Password;";
 
-module.exports = mongoose;
+sql.connect(connStr)
+   .then(conn => global.conn = conn)
+   .catch(err => console.log(err));
+
+module.exports = sql;
