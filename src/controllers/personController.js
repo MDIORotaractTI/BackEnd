@@ -20,16 +20,21 @@
     });
 
     router.post('/user', (req,res)=>{
-        const id = parseInt(req.body.id);
-        const name = req.body.name.substring(0,150);
+        const name = req.body.name;
+        const nickname = req.body.nickname.substring(0,20);
         const cpf = req.body.cpf.substring(0,11);
+        const genre = req.body.genre.substring(0,1);
+        const rg = req.body.rg.substring(0,9);
+        const emitter_rg = req.body.emitter_rg.substring(0,9);
+        const emitter_data_rg= req.body.emitter_data_rg.substring(0,10);
+        const date_birth= req.body.date_birth.substring(0,10);
+        
         try{
-            execSQLQuery(`SET IDENTITY_INSERT [dbo].[Tab_Socios] ON`);
-            execSQLQuery(`INSERT INTO [dbo].[Tab_Socios] ([ID],[NOME], [CPF]) VALUES(${id},'${name}','${cpf}')`, res);
-            execSQLQuery(`SET IDENTITY_INSERT [dbo].[Tab_Socios] OFF`);
-            //execSQLQuery('INSERT INTO [dbo].[Tab_Socios] ([ID], [NOME], [APELIDO], [SEXO], [RG], [RG_EMISSOR], [RG_EMISSOR_DATA], [CPF], [DATA_NASCIMENTO], [SENHAXXX], [SENHA], [ADMIN], [ADM_NOTICIA], [ADM_BANNER], [ADM_MURAL], [ADM_PROJETOS], [ADM_DOWNLOADS], [PROFISSAO], [EMAIL], [TELEFONE_01], [TELEFONE_02], [TELEFONE_03], [CELULAR_01], [CELULAR_02], [CELULAR_03], [FACEBOOK], [TWITTER], [ORKUT], [LINKEDIN], [SKYPE], [MSN], [SITE], [OBS], [EXCLUIDO], [EXCLUIDO_DATA], [EXCLUIDO_ID_USUARIO], [CADASTRO_DATA], [CADASTRO_ID_USUARIO], [ROTAKIDS], [INTERACT], [RYLA], [INTERCAMBISTA]) VALUES (${id}, '${name}', N'RÉGIS', N'M', N'0', NULL, NULL, N'609699890', N'1972-10-12 00:00:00.000', NULL, N'2c70d5643db9dd28757f9d8a7f41571b', N'0', N'0', N'0', N'0', N'0', N'0', NULL, N'regis.rocha@terra.com.br', N'51 33425829', N'51 33372508', NULL, N'51 99688844', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)', res);
+            execSQLQuery(`INSERT INTO [dbo].[Tab_Socios] ([NOME], [APELIDO], [SEXO], [RG], [RG_EMISSOR], [RG_EMISSOR_DATA], [CPF], [DATA_NASCIMENTO]) VALUES 
+            ('${name}', '${nickname}', '${genre}', '${rg}', '${emitter_rg}', '${emitter_data_rg}', '${cpf}', '${date_birth}')`, res);
+            return res.status(201).send({success: 'OK'});
         }catch(err){
-            return res.status(400).send({error: 'Não foi possível buscar os usuários'});
+            return res.status(400).send({error: 'Não foi possível criar o usuário'});
         }
     });
 
