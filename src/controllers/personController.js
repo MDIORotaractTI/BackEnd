@@ -21,20 +21,37 @@
 
     router.post('/user', (req,res)=>{
         const name = req.body.name;
-        const nickname = req.body.nickname.substring(0,20);
-        const cpf = req.body.cpf.substring(0,11);
-        const genre = req.body.genre.substring(0,1);
-        const rg = req.body.rg.substring(0,9);
-        const emitter_rg = req.body.emitter_rg.substring(0,9);
-        const emitter_data_rg= req.body.emitter_data_rg.substring(0,10);
-        const date_birth= req.body.date_birth.substring(0,10);
+        const genre = req.body.genre;
+        const date_birth= req.body.birth;
+        const email = req.body.email;
+        //const godfather = req.body.godfather;
+        //const rotaryId = req.body.rotaryId;
+        //const clubPosition = req.body.clubPosition;
+        //const active = req.body.active;
+        //const password = req.body.password;
+        //const dateInauguration = req.body.dateInauguration;
         
         try{
-            execSQLQuery(`INSERT INTO [dbo].[Tab_Socios] ([NOME], [APELIDO], [SEXO], [RG], [RG_EMISSOR], [RG_EMISSOR_DATA], [CPF], [DATA_NASCIMENTO]) VALUES 
-            ('${name}', '${nickname}', '${genre}', '${rg}', '${emitter_rg}', '${emitter_data_rg}', '${cpf}', '${date_birth}')`, res);
-            return res.status(201).send({success: 'OK'});
+            execSQLQuery(`INSERT INTO [dbo].[Tab_Socios] ([NOME], [SEXO], [DATA_NASCIMENTO], [EMAIL]) VALUES 
+            ('${name}', '${genre}', '${date_birth}', '${email}')`, res);
+            return res.status(201).send({success: 'Operação realizada com sucesso'});
         }catch(err){
             return res.status(400).send({error: 'Não foi possível criar o usuário'});
+        }
+    });
+
+    router.patch('/user/:id', (req,res)=>{
+        const id = parseInt(req.params.id);
+        const name = req.body.name;
+        const genre = req.body.genre;
+        const date_birth= req.body.birth;
+        const email = req.body.email;
+        
+        try{
+            execSQLQuery(`UPDATE [dbo].[Tab_Socios] SET NOME='${name}', SEXO='${genre}', DATA_NASCIMENTO='${date_birth}', EMAIL='${email}' WHERE ID=${id}`, res);
+            return res.status(200).send({success: 'Alterado com sucesso'});
+        }catch(err){
+            return res.status(400).send({error: 'Problemas na requisição.'});
         }
     });
 
