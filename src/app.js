@@ -9,8 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./controllers/authController')(app);
-require('./controllers/projectController')(app);
+require('./controllers/clubController')(app);
 require('./controllers/personController')(app);
+require('./controllers/districtController')(app);
 
 app.listen(port, function () {
     console.log(`app listening on port ${port}`)
