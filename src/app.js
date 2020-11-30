@@ -12,6 +12,7 @@ require('./controllers/authController')(app);
 require('./controllers/clubController')(app);
 require('./controllers/personController')(app);
 require('./controllers/districtController')(app);
+require('./controllers/projectController')(app);
 
 app.listen(port, function () {
     console.log(`app listening on port ${port}`)
